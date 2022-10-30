@@ -5,12 +5,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const Navigation = () => {
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" className='mb-3'>
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
             <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/list">Images</Nav.Link>
             </Nav>
         </Navbar>
     );

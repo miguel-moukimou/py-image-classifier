@@ -45,7 +45,6 @@ class  ImageList extends Component {
         }) 
         return (
             <div>
-                <h1>Image List here</h1>
                 {this.state.isLoading ?
                     <Spinner animation="border" role="status">
                         <span className="visually-hidden">Loading...</span>
