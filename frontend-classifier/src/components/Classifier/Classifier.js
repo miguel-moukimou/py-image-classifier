@@ -2,33 +2,23 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
-import axios from 'axios'
-import './Classifier.css'
+import axios from 'axios';
+import './Classifier.css';
 
 class Classifier extends Component {
     state = {
         files: [],
-        isLoading: false
+        isLoading: false,
+        recentImage: null
     }
-
-    /*componentDidMount(){
-        this.getImages();
-    }
-
-    getImages = () =>{
-        axios.get('http://127.0.0.1:8000/api/images/',{
-            headers: {
-                'accept': 'appliction/json'
-            }
-        }).then(resp =>{
-            console.log(resp)
-        })
-    }*/
 
     onDrop = (files) => {
         this.setState({ 
-            isLoading: true
+            isLoading: true,
+            files: [],
+            recentImage: null
         })
         this.loadImage(files);
     }
@@ -45,7 +35,19 @@ class Classifier extends Component {
         
     }
 
+    activateSpinner = () =>{
+        this.setState({
+            files:[],
+            isLoading: true,
+        });
+    }
+
+    deactivateSpinner = () =>{
+        this.setState({isLoading: false});
+    }
+
     sendImage = ()=>{
+        this.activateSpinner();
         let formData = new FormData();
         formData.append("picture", this.state.files[0], this.state.files[0].name)
         axios.post('http://127.0.0.1:8000/api/images/', formData, {
@@ -70,8 +72,13 @@ class Classifier extends Component {
             }
         })
         .then(resp =>{
+            this.setState({recentImage:resp})
             console.log(resp);
         })
+        .catch(error=>{
+            console.log(error)
+        })
+        this.deactivateSpinner();
     }
 
     render() {
@@ -100,6 +107,15 @@ class Classifier extends Component {
                         <Spinner animation="border" role="status">
                             <span className="visually-hidden">Loading...</span>
                         </Spinner>
+                        }
+
+                        {this.state.recentImage && 
+                        <React.Fragment>
+                            <Alert variant='primary'>
+                                {this.state.recentImage.data.classified}
+                            </Alert>
+                            <img alt={this.state.recentImage.data.classified} className='justify-content-center' src={this.state.recentImage.data.picture} height='200' rounded/>
+                        </React.Fragment>
                         }
                     </section>
                 )}
