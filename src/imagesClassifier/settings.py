@@ -33,8 +33,8 @@ SECRET_KEY = 'hryy(s)pyc+w&7td1(o8u=+!m4@4i!^^em-o*h#4xsoxg9c^u1'
 
 IS_HEROKU = "DYNO" in os.environ
 
-if not IS_HEROKU:
-    DEBUG = True
+#if not IS_HEROKU:
+DEBUG = True
 
 if IS_HEROKU:
     ALLOWED_HOSTS = ["*"]
