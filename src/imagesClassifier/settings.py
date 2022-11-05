@@ -66,6 +66,10 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000"
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://centi-image-classifier-front.herokuapp.com",,
+]
+
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
