@@ -62,6 +62,7 @@ INSTALLED_APPS = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
+    "https://centi-image-classifier-front.herokuapp.com",
     "http://localhost:3000"
 ]
 
