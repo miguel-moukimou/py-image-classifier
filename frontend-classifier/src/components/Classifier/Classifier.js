@@ -50,7 +50,7 @@ class Classifier extends Component {
         this.activateSpinner();
         let formData = new FormData();
         formData.append("picture", this.state.files[0], this.state.files[0].name)
-        axios.post('http://127.0.0.1:8000/api/images/', formData, {
+        axios.post('https://py-image-classifier.herokuapp.com/api/images/', formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             }
@@ -66,7 +66,7 @@ class Classifier extends Component {
     }
 
     getImageClass = (obj) =>{
-        axios.get(`http://127.0.0.1:8000/api/images/${obj.data.id}/`, {
+        axios.get(`https://py-image-classifier.herokuapp.com/api/images/${obj.data.id}/`, {
             headers: {
                 'accept': 'application/json'
             }

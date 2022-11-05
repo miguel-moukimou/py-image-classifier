@@ -17,7 +17,7 @@ class  ImageList extends Component {
     }
 
     getImages = () =>{
-        axios.get('http://127.0.0.1:8000/api/images/',{
+        axios.get('https://py-image-classifier.herokuapp.com/api/images/',{
             headers: {
                 'accept': 'appliction/json'
             }
