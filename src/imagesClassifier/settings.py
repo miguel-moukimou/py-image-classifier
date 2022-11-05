@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+from operator import truediv
 import os
 import dj_database_url
 from django.test.runner import DiscoverRunner
@@ -36,6 +37,7 @@ IS_HEROKU = "DYNO" in os.environ
 
 #if not IS_HEROKU:
 DEBUG = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 if IS_HEROKU:
     ALLOWED_HOSTS = ["*"]
