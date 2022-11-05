@@ -37,13 +37,11 @@ IS_HEROKU = "DYNO" in os.environ
 
 #if not IS_HEROKU:
 DEBUG = True
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_ALLOW_ALL = True
 
-if IS_HEROKU:
-    ALLOWED_HOSTS = ["*"]
-else:
-    ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ["*"]
+#CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
