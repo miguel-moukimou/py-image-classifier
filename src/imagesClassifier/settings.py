@@ -67,7 +67,7 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://centi-image-classifier-front.herokuapp.com",,
+    "https://centi-image-classifier-front.herokuapp.com",
 ]
 
 MIDDLEWARE = [
